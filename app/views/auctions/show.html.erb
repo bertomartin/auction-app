@@ -1,0 +1,12 @@
+<p>Name: <%= @auction.name %></p>
+<p>Seller: <%= @auction.seller.name %></p>
+
+<p>Current Bids</p>
+
+<ol>
+<% @auction.bids.each do |bid| %>
+  <li><%= bid.amount %> - <%= bid.bidder.name %></li>
+<% end %>
+</ol>
+
+<%= link_to "Bid on This Item", new_auction_bid_path(@auction) %>

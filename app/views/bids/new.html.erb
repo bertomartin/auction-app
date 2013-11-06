@@ -1,0 +1,19 @@
+<%#= form_for(@auction, :url => '/auctions') do |f| %>
+You are bidding on: <%= @auction.name %>
+
+<%= form_for(@bid, :url => auction_bids_path(@auction)) do |f| %>
+  <%#= f.hidden_field :auction_id, @auction.id %>
+  <p>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </p>
+
+  <p>
+    <% bidder_options = User.all.collect{|u| [u.name, u.id]}%>
+    <%= f.select(:bidder_id, bidder_options) %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
